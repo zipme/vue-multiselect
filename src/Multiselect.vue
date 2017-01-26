@@ -2,8 +2,8 @@
   <div
     :tabindex="searchable ? -1 : 0"
     :class="{ 'multiselect--active': isOpen, 'multiselect--disabled': disabled, 'multiselect--above': !hasEnoughSpace }"
-    @focus="activate()"
-    @blur="searchable ? false : deactivate()"
+    v-clickoutside="deactivate"
+    @click="toggle()"
     @keydown.self.down.prevent="pointerForward()"
     @keydown.self.up.prevent="pointerBackward()"
     @keydown.enter.tab.stop.self="addPointerElement($event)"
@@ -72,6 +72,7 @@
                 v-if="!option.$isLabel"
                 :class="optionHighlight(index, option)"
                 @mousedown.prevent="select(option)"
+                @touchend.prevent="select(option)"
                 @mouseenter="pointerSet(index)"
                 :data-select="option.isTag ? tagPlaceholder : selectLabelText"
                 :data-selected="selectedLabelText"
@@ -103,9 +104,11 @@
 <script>
   import multiselectMixin from './multiselectMixin'
   import pointerMixin from './pointerMixin'
+  import Clickoutside from './clickoutside'
 
   export default {
     name: 'vue-multiselect',
+    directives: { Clickoutside },
     mixins: [multiselectMixin, pointerMixin],
     props: {
       /**
