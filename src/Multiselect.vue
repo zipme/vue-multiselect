@@ -59,6 +59,7 @@
           ref="list"
           v-show="isOpen"
           @touchend.stop=""
+          @click.stop=""
           class="multiselect__content">
           <slot name="beforeList"></slot>
           <li v-if="multiple && max === internalValue.length">
