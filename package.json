@@ -1,6 +1,6 @@
 {
   "name": "vue-multiselect",
-  "version": "2.0.0-beta.13",
+  "version": "2.0.0-beta.13.1",
   "description": "Multiselect component for vue.js",
   "author": "Damian Dulisz <damian.dulisz@monterail.com>",
   "private": false,
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/monterail/vue-multiselect.git"
+    "url": "git+https://github.com/zipme/vue-multiselect.git"
   },
   "scripts": {
     "dev": "node build/dev-server.js",
