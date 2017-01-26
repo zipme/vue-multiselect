@@ -9,8 +9,8 @@
     @keydown.enter.tab.stop.self="addPointerElement($event)"
     @keyup.esc="deactivate()"
     class="multiselect">
-      <div @mousedown.prevent="toggle()" class="multiselect__select"></div>
-      <div ref="tags" class="multiselect__tags">
+      <div @mousedown.prevent="toggle()" @touchend.stop="" class="multiselect__select"></div>
+      <div ref="tags" @touchend.stop="" class="multiselect__tags">
         <span
           v-for="option of visibleValue"
           onmousedown="event.preventDefault()"
@@ -58,6 +58,7 @@
           :style="{ maxHeight: maxHeight + 'px' }"
           ref="list"
           v-show="isOpen"
+          @touchend.stop=""
           class="multiselect__content">
           <slot name="beforeList"></slot>
           <li v-if="multiple && max === internalValue.length">
